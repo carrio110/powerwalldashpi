@@ -1,6 +1,6 @@
 # Formerly the 'FROM' was 'centos:7' which is not multiarch. Changed to centos7 which is multiarch.
 
-FROM centos7
+FROM centos:centos7
 MAINTAINER JR Morgan <jr@shifti.us>
 
 # And I suppose yours truly, R Carr <richardcarr@gmail.com>
