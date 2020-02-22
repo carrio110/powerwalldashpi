@@ -1,5 +1,11 @@
 # Overview
 
+A raspberry pi fork of the excellent liveaverage/docker-powerwall-dashboard
+
+Please note that this has been built specifically for RPI 4 on raspbian.
+
+Please see original below:
+
 This is based on the work of [@rhodesman](https://github.com/rhodesman) and his [teslaPowerDash](https://github.com/rhodesman/teslaPowerDash) repo, but hopefully enables easier ramp up to start obtaining and trending Powerwall 2 API data.
 
 # Preview
