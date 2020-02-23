@@ -10,8 +10,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 
 [influxdb]
 name = InfluxDB Repository - RHEL \$releasever
-baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+baseurl = https://repos.influxdata.com/rhel/7/armhf/stable/
 enabled = 1
 gpgcheck = 1
 gpgkey = https://repos.influxdata.com/influxdb.key
-

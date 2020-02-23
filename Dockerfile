@@ -1,21 +1,8 @@
-FROM centos:7
-MAINTAINER JR Morgan <jr@shifti.us>
-
-LABEL Vendor="CentOS" \
-      License=GPLv2 \
-      Version=1.0
+FROM influxdb
+MAINTAINER Rich Carr <richardcarr@gmail.com>
 
 ENV POWERWALL_HOST="teslapw"
 ENV DATABASE="PowerwallData"
-
-ADD powerwall.repo /etc/yum.repos.d/powerwall.repo
-RUN yum -y install epel-release
-RUN yum -y --setopt=tsflags=nodocs install \
-	influxdb \
-	telegraf \
-	initscripts \
-	urw-fonts \
-	grafana
 
 # Defaults for InfluxDB
 ENV INFLUXDB_HTTP_ENABLED=true \
@@ -25,6 +12,24 @@ ENV INFLUXDB_HTTP_ENABLED=true \
 
 ## InfluxDB stores data by default at /var/lib/influxdb/[data|wal]
 ## which should be mapped to a docker/podman volume for persistence
+
+# Defaults for Grafana
+ENV PROVISIONING_CFG_DIR="/etc/grafana/provisioning/" \
+    PLUGINS_DIR="/var/lib/grafana/plugins"
+
+RUN apt-get update
+
+RUN apt-get install -y apt-transport-https software-properties-common wget
+
+RUN wget -q -O - https://packages.grafana.com/gpg.key | apt-key add -
+RUN wget -qO- https://repos.influxdata.com/influxdb.key | apt-key add -
+
+RUN add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+RUN add-apt-repository "deb https://repos.influxdata.com/debian stretch stable"
+
+RUN apt-get update
+
+RUN apt-get install -y grafana telegraf
 
 ADD powerwall.conf /etc/telegraf/telegraf.d/powerwall.conf
 ADD graf_DS.yaml /etc/grafana/provisioning/datasources/graf_DS.yaml
