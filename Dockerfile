@@ -21,7 +21,7 @@ RUN apt-get update
 
 RUN apt-get install -y apt-transport-https software-properties-common wget
 
-RUN wget -q -O - https://packages.grafana.com/gpg.key | apt-key add -
+RUN wget -qO- https://packages.grafana.com/gpg.key | apt-key add -
 RUN wget -qO- https://repos.influxdata.com/influxdb.key | apt-key add -
 
 RUN add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
