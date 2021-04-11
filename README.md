@@ -1,5 +1,9 @@
 # Overview
 
+# !!Stop Press!! The upsteam project liveaverage/docker-powerwall-dashboard now supports multiarch using the quay.io/liveaverage/powerwall-dashboard:multiarch image:tag.
+
+You're much better off using that now (I certainly am) as my humble fork is a bit of a kludge and doesn't support cookie auth like J.R's latest version does.
+
 A raspberry pi fork of the excellent liveaverage/docker-powerwall-dashboard
 
 Please note that this has been built specifically for RPI 4 on raspbian.
